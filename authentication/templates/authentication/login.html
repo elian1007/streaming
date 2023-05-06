@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<link href="{% static 'ProyectoWeb/css/login.css'%}" rel="stylesheet">
+	<link href="{% static 'ProyectoWeb/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loguin</title>
+</head>
+<body>
+    {% block content %}
+    <!-- inicio -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Slide Navbar</title>
+        <link rel="stylesheet" type="text/css" href="slide navbar style.css">
+    	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="main">  	
+            <input type="checkbox" id="chk" aria-hidden="true">
+                <div class="signup">
+                    <form method="post" action="">
+                        <label class="label-VR" for="chk" aria-hidden="true">Sign in</label>
+                        {% csrf_token %}
+                        {{form}}
+                        <button>Sign in</button>
+                        {% if messages %}
+                            {% for mensaje in messages %}
+
+							<div class="alert alert-warning alert-dismissible fade show" role="alert">
+								<strong>{{mensaje}}!</strong> Debe verificar algunos de esos campos a continuación.
+
+							  </div>
+                            {% endfor %}
+                        {% endif %}
+                    </form>
+                </div>
+        </div>
+    </body>
+    </html>
+    {% endblock %}
+</body>
+</html>
