@@ -1,18 +1,26 @@
 <!DOCTYPE html>
+
 {% load static %}
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Peliculas o Series</title>
 </head>
 <body>
-    <p style="color:blue" >Peliculas </p>
-    <div style="background:blue" id="app"></div>
-    <button onclick="getRandomItem()" >Probar suerte</button>
+    <p  >Peliculas </p>
+    <div class="card" style="width: 18rem;">
+        <div class="container" id="app"></div>
+
+    </div>
+    <button id="refresh">Probar suerte</button>
+
+
 </body>
 <script type="text/javascript" src="{% static '/js/films.js' %}"></script>
 
 </html>
+<style>

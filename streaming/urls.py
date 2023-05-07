@@ -21,15 +21,11 @@ from films.api.router import router_media
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('films',include('films.urls')),
+    path('',include('films.urls')),
     path('',include('authentication.urls')),
 
     path('api/',include(router_media.urls)),
-    # path('api/mediaviews/',include(router_media.urls)),
-    # path('api/mediarating/',include(router_media.urls)),
-    # path('api/media/random/',include(router_media.urls)),
-    # path('api/media/order/',include(router_media.urls)),
-    # path('api/media/filter/',include(router_media.urls))
+
 
 
 

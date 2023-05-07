@@ -4,11 +4,7 @@ from rest_framework import routers
 from films.api.views import MediaApiViewSet,MediaViewsApiViewSet,MediaRatingAPiViewSet, MediaRandomApiViewSet,MediaOrderApiViewSet, MediaFilterApiViewSet
 
 router_media=DefaultRouter()
-# router_mediaviews=DefaultRouter()
-# router_mediarating=DefaultRouter()
-# router_mediarandom=DefaultRouter()
-# router_mediaorder=DefaultRouter()
-# router_mediafilter=DefaultRouter()
+
 
 
 
