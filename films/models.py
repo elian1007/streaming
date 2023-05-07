@@ -1,6 +1,9 @@
 from django.db import models
 from django.db import models
 from django.conf import settings
+from django.db.models import IntegerField, Model
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 from django.contrib.auth import get_user_model
 User=get_user_model()
 # Create your models here.
@@ -18,13 +21,19 @@ class MediaViews(models.Model):
         mediaId=models.ForeignKey(Media,on_delete=models.CASCADE)
 
 
-# class MediaRating(models.Model):
-#         userId=models.ForeignKey('')
-#         mediaId=models.ForeignKey('')
-#         rate=models.IntegerField('') 
+
+class MediaRating(models.Model):
+        userId=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+        mediaId=models.ForeignKey(Media,on_delete=models.CASCADE)
+        rate = IntegerField(
+        default=0,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ]
+     )
 
 
-# codigo_departamento = models.ForeignKey('Departamentos', models.DO_NOTHING, db_column='codigo_departamento', blank=True, null=True)
 
 
 
