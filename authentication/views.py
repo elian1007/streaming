@@ -4,27 +4,30 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 
+
+
+
 # Create your views here.
-class VRegistro(View):
-    def get(self,request):
-        form=UserCreationForm()
-        return render(request, "authentication/registro.html",{"form":form})
+# class VRegistro(View):
+#     def get(self,request):
+#         form=UserCreationForm()
+#         return render(request, "authentication/registro.html",{"form":form})
 
-    def post(self,request):
-        form=UserCreationForm(request.POST)
-        if form.is_valid():
+#     def post(self,request):
+#         form=UserCreationForm(request.POST)
+#         if form.is_valid():
 
-            usuario=form.save()
-            login(request, usuario)
-            return redirect('inicio')
-        else:
-            for msg in form.error_messages:
-                messages.error(request, form.error_messages[msg])
-            return render(request, "authentication/registro.html",{"form":form})
+#             usuario=form.save()
+#             login(request, usuario)
+#             return redirect('inicio')
+#         else:
+#             for msg in form.error_messages:
+#                 messages.error(request, form.error_messages[msg])
+#             return render(request, "authentication/registro.html",{"form":form})
 
 def cerrar_sesion(request):
     logout(request)
-    return redirect('inicio')
+    return redirect('login')
 
 def login(request):
     if request.method=="POST":
@@ -35,7 +38,7 @@ def login(request):
             usuario=authenticate(username=nombre, password=contraseña)
             if usuario is not None:
                 login(request, usuario)
-                return redirect('inicio')
+                return redirect('prueba')
             else:
                 messages.error(request, "Usuario no valido")
         else:
