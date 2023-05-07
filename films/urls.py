@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static 
 
 urlpatterns = [
-    path('',views.peliculas ,name="films"),
+    path('films',views.peliculas ,name="films"),
 
 
 ]

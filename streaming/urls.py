@@ -17,19 +17,19 @@ Including another URLconf
 from django import views
 from django.contrib import admin
 from django.urls import path,include
-from films.api.router import router_media,router_mediaviews,router_mediarating,router_mediarandom, router_mediaorder, router_mediafilter
+from films.api.router import router_media
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('films/',include('films.urls')),
+    path('films',include('films.urls')),
     path('',include('authentication.urls')),
 
-    path('api/media/',include(router_media.urls)),
-    path('api/mediaviews/',include(router_mediaviews.urls)),
-    path('api/mediarating/',include(router_mediarating.urls)),
-    path('api/media/random/',include(router_mediarandom.urls)),
-    path('api/media/order/',include(router_mediaorder.urls)),
-    path('api/media/filter/',include(router_mediafilter.urls)),
+    path('api/',include(router_media.urls)),
+    # path('api/mediaviews/',include(router_media.urls)),
+    # path('api/mediarating/',include(router_media.urls)),
+    # path('api/media/random/',include(router_media.urls)),
+    # path('api/media/order/',include(router_media.urls)),
+    # path('api/media/filter/',include(router_media.urls))
 
 
 

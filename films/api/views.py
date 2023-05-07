@@ -3,7 +3,6 @@ from films.models import Media, MediaViews,MediaRating
 import random
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
-# from rest_framework import generics
 from django.forms.models import model_to_dict
 from films.api.serializers import Mediaserializer,MediaViewSerializer,MediaRatingSerializer
 
@@ -20,10 +19,6 @@ class MediaRatingAPiViewSet(ModelViewSet):
     queryset=MediaRating.objects.all()
 
 
-# class MediaRandomApiViewSet(ModelViewSet):
-#     serializer_class=Mediaserializer
-#     count=Media.objects.count()
-#     queryset=Media.objects.all()
 
 
 class MediaRandomApiViewSet(ModelViewSet):
