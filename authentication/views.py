@@ -27,7 +27,7 @@ from django.contrib import messages
 
 def cerrar_sesion(request):
     logout(request)
-    return redirect('login')
+    return render(request,"authentication/login.html")
 
 def login(request):
     if request.method=="POST":
@@ -37,8 +37,8 @@ def login(request):
             contraseña=form.cleaned_data.get("password")
             usuario=authenticate(username=nombre, password=contraseña)
             if usuario is not None:
-                login(request, usuario)
-                return redirect('films')
+                # login(request)
+                return render(request,"films/films.html")
             else:
                 messages.error(request, "Usuario no valido")
         else:

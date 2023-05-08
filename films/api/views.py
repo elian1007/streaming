@@ -6,6 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.forms.models import model_to_dict
 from films.api.serializers import Mediaserializer,MediaViewSerializer,MediaRatingSerializer
 
+
 class MediaApiViewSet(ModelViewSet):
     serializer_class=Mediaserializer
     queryset=Media.objects.all()

@@ -17,9 +17,10 @@
         </div>
         <button id="refresh">Probar suerte</button>
     </div>
-
-    <script type="text/javascript" src="{% static '/js/films.js' %}"></script>
-
+{% if request.user.is_authenticated %}
+    <a href="{% url 'login' %}" >Salir</a>
+{% endif %}
+<script type="text/javascript" src="{% static '/js/films.js' %}"></script>
 </body>
 
 </html>
