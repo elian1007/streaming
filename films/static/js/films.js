@@ -9,10 +9,9 @@ fetch(`${API_URL}`)
 .then((users)=>{
 
 
-      const tpl= users.map((user) =>`<h3>${user.name}   <p>${user.genre}</p> <p>${user.type}</p> </h3>`)
-    HTMLResponse.innerHTML = `<u>${tpl}</u>`
-})
-
+      const tpl= users.map((user) =>`<h3>  <p> Nombre: ${user.name}</p> <p> Genero: ${user.genre}</p> <p> Tipo: ${user.type}</p> <p> visualizaciones: ${user.views}</p> </h3>`)
+    HTMLResponse.innerHTML = `<p>${tpl}</p>`
+}) 
 
 
 let refresh = document.getElementById('refresh');

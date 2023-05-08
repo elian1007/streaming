@@ -29,7 +29,7 @@ def cerrar_sesion(request):
     logout(request)
     return redirect('login')
 
-def login(request,item):
+def login(request):
     if request.method=="POST":
         form=AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -38,7 +38,7 @@ def login(request,item):
             usuario=authenticate(username=nombre, password=contraseña)
             if usuario is not None:
                 login(request, usuario)
-                return redirect('prueba')
+                return redirect('films')
             else:
                 messages.error(request, "Usuario no valido")
         else:

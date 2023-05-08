@@ -5,34 +5,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static './css/style.css' %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Peliculas o Series</title>
 </head>
 <body>
-    <p  >Peliculas </p>
+    <h2>Peliculas </h2>
     <div class="card" style="width: 18rem;">
-        <div class="container" id="app"></div>
-
+        <div class="container" id="app">
+            
+        </div>
+        <button id="refresh">Probar suerte</button>
     </div>
-    <button id="refresh">Probar suerte</button>
 
+    <script type="text/javascript" src="{% static '/js/films.js' %}"></script>
 
 </body>
-<script type="text/javascript" src="{% static '/js/films.js' %}"></script>
 
 </html>
-<style>
-    .container{
+ <style>
+    .card{
         border: solid 2px black;
         border-radius: 10px;
         text-align: center;
         text-decoration: none;
+        display:flex
     }
     
     body{
         background-color: rgba(33, 32, 32, 0.29)(20, 18, 18);
+    }
+
+    .card{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    button{
+        border: none;
+        background: blue;
+        border-radius: 3px;
+        width: 111px;
+        height: 32px;
+        margin-bottom: 10px;
+    }
+
+    button:hover{
+        color:width
     }
 
 </style>
