@@ -2,7 +2,7 @@ from rest_framework.serializers import ModelSerializer
 from films.models import Media,MediaViews,MediaRating
 from rest_framework.fields import SerializerMethodField
 from django.db.models import Avg
-import pprint
+from rest_framework.validators import UniqueTogetherValidator
 
 
 
@@ -10,6 +10,12 @@ class MediaViewSerializer(ModelSerializer):
     class Meta:
         model= MediaViews
         fields=['id','userId','mediaId']
+        validators = [
+            UniqueTogetherValidator(
+                queryset=MediaViews.objects.all(),
+                fields=['userId', 'mediaId']
+            )
+        ]
 
 class Mediaserializer(ModelSerializer):
     views =SerializerMethodField()
@@ -26,18 +32,20 @@ class Mediaserializer(ModelSerializer):
     def get_average(media,item):
         rating=MediaRating.objects.filter(
             mediaId__id=item.id)
-   
         stars_average = rating.aggregate(Avg('rate'))["rate__avg"]
-
         return stars_average
     
-
-        
 
 class MediaRatingSerializer(ModelSerializer):
     class Meta:
         model=MediaRating
-        fields=['userId','mediaId','rate']
+        fields=['userId','mediaId','rate']                
+        validators = [
+            UniqueTogetherValidator(
+                queryset=MediaRating.objects.all(),
+                fields=['userId', 'mediaId']
+            )
+        ]
 
 class MediaRandomSerializer(ModelSerializer):
     class Meta:

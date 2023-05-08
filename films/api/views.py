@@ -15,7 +15,6 @@ class MediaViewsApiViewSet(ModelViewSet):
     serializer_class=MediaViewSerializer
     queryset=MediaViews.objects.all()
 
-    # falta validad una unica visualizacion 
 
 class MediaRatingAPiViewSet(ModelViewSet):
     serializer_class=MediaRatingSerializer
