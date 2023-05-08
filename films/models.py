@@ -13,14 +13,9 @@ class Media(models.Model):
         genre=models.CharField(max_length=25, null=False)
         type=models.CharField(max_length=30, null=False)
 
-        
-
-
 class MediaViews(models.Model):
         userId=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
         mediaId=models.ForeignKey(Media,on_delete=models.CASCADE)
-
-
 
 class MediaRating(models.Model):
         userId=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)

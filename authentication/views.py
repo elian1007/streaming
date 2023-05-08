@@ -29,7 +29,7 @@ def cerrar_sesion(request):
     logout(request)
     return redirect('login')
 
-def login(request):
+def login(request,item):
     if request.method=="POST":
         form=AuthenticationForm(request, data=request.POST)
         if form.is_valid():
