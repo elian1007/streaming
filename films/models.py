@@ -14,7 +14,8 @@ class Media(models.Model):
         type=models.CharField(max_length=30, null=False)
 
 class MediaViews(models.Model):
-        userId=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+        id = models.AutoField(primary_key=True, blank=False, null=False)
+        userId = models.ForeignKey(User,on_delete=models.CASCADE,null=True, blank=True)
         mediaId=models.ForeignKey(Media,on_delete=models.CASCADE)
 
 class MediaRating(models.Model):

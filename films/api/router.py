@@ -20,3 +20,6 @@ router_media.register(prefix='mediaorder',basename='mediaorder',viewset=MediaOrd
 
 router_media.register(prefix='mediafilter',basename='mediafilter',viewset=MediaFilterApiViewSet)
 
+# router_media.register(prefix='user',basename='user',viewset=CustomObtainAuthToken)
+
+

@@ -36,9 +36,10 @@ def login(request):
             nombre=form.cleaned_data.get("username")
             contraseña=form.cleaned_data.get("password")
             usuario=authenticate(username=nombre, password=contraseña)
+            id= request.user
             if usuario is not None:
                 # login(request)
-                return render(request,"films/films.html")
+                return render(request,"films/films.html",{"usuario.id":usuario.id})
             else:
                 messages.error(request, "Usuario no valido")
         else:

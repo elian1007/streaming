@@ -2,6 +2,7 @@
 
 {% load static %}
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,16 +12,35 @@
 </head>
 <body>
     <h2>Peliculas </h2>
+    {% csrf_token %}
+    
+
     <div class="card" style="width: 18rem;">
         <div class="container" id="app">
             
         </div>
         <button id="refresh">Probar suerte</button>
     </div>
+    <select id="select" onchange="eventSelect();" name="select">
+        <option value="">Seleccione Order</option>
+        <option value="name">Nombre</option>
+        <option value="type">Tipo</option>
+        <option value="genre">Genero</option>
+        <option value="views">Vistas</option>
+        <option value="rate">Puntaje</option>
+      </select>
+    <div id="app2"></div>
+
+    <input id="name" type="text"   placeholder="Nombre">
+    <input id="genre" type="text"  placeholder="Genero">
+    <input id="rate" type="text"  placeholder="Tipo">
+    <button id="buttonFilter" onclick="eventFilter()" >Filtrar</button>
+    <div id="appFilter" ></div>
+
 {% if request.user.is_authenticated %}
     <a href="{% url 'login' %}" >Salir</a>
 {% endif %}
-<script type="text/javascript" src="{% static '/js/films.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/mediarandom.js' %}"></script>
 </body>
 
 </html>

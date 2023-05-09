@@ -3,19 +3,24 @@ from films.models import Media,MediaViews,MediaRating
 from rest_framework.fields import SerializerMethodField
 from django.db.models import Avg
 from rest_framework.validators import UniqueTogetherValidator
-
+from rest_framework import serializers
+from rest_framework.fields import CurrentUserDefault
 
 
 class MediaViewSerializer(ModelSerializer):
     class Meta:
         model= MediaViews
-        fields=['id','userId','mediaId']
+        fields = "__all__"
         validators = [
             UniqueTogetherValidator(
                 queryset=MediaViews.objects.all(),
                 fields=['userId', 'mediaId']
             )
         ]
+
+        def save(self):
+            userId = CurrentUserDefault()  # <= magic!
+            mediaId = self.validated_data['mediaId']
 
 class Mediaserializer(ModelSerializer):
     views =SerializerMethodField()
