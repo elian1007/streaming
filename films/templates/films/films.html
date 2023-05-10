@@ -19,20 +19,7 @@
        <button class="button-33" id="refresh">Probar suerte</button>
     </div>
     <div class="card" style="width: 30rem;">
-        <form>
-            <p class="clasificacion">
-              <input id="radio1" type="radio" name="estrellas" value="5"><!--
-              --><label for="radio1">★</label><!--
-              --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-              --><label for="radio2">★</label><!--
-              --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-              --><label for="radio3">★</label><!--
-              --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-              --><label for="radio4">★</label><!--
-              --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-              --><label for="radio5">★</label>
-            </p>
-          </form>
+
         <div class="container" id="app">
         </div>
     </div>
@@ -50,11 +37,13 @@
 <div class="">
     <div id="app2"></div>
 
-
+  <div class="cont_input"></div>
     <input id="name" type="text"   placeholder="Nombre">
     <input id="genre" type="text"  placeholder="Genero">
     <input id="rate" type="text"  placeholder="Tipo">
-    <button id="buttonFilter" onclick="eventFilter()" >Filtrar</button>
+    <button id="buttonFilter" onclick="eventFilter()" ><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg></button>
     <div id="appFilter" ></div>
 </div>
 
@@ -66,6 +55,51 @@
 
 </html>
  <style>
+  #appFilter{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+
+  #buttonFilter{
+    height: 46px;
+    border-radius: 50%;
+    width: 46px;
+    justify-content: center;
+    align-content: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  h1{
+    display: flex;
+    justify-content: center;
+    font-size: -webkit-xxx-large;
+  }
+  .cont_input{
+    background:red;
+  }
+  p {
+    color: wheat;
+    font-size: larger;
+}
+
+  input{
+    background: transparent;
+    border: none;
+    width: 30%;
+    height:30px;
+    border-bottom: 3px solid blue;
+    color:wheat;
+  }
+  input[type=text] {
+    background: transparent;
+    border: none;
+    width: 30%;
+    border-bottom: 3px solid blue;
+  }
   h1{
     color: wheat;
   }
