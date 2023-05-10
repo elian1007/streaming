@@ -1,9 +1,16 @@
 const API_URL = 'http://127.0.0.1:8000/api/mediarandom/';
 
 function getMediaTemplate(media) {
-    tempstr = `<h3>  <p> Nombre: ${media.name}</p> <p> Genero: ${media.genre}</p> <p> Tipo: ${media.type}</p> <p> visualizaciones: ${media.views}</p> <p>promedio: ${media.average}</p> <button onclick="markAsViewed('${media.id}')">Vista</button> </h3>`
+
+    tempstr = `<h3>  <p> Nombre: ${media.name}</p> <p> Genero: ${media.genre}</p> <p> Tipo: ${media.type}</p> <p> visualizaciones: ${media.views}</p> <p>promedio: ${media.average}</p> <button class="play-btn" id="vista" onclick="markAsViewed('${media.id}')"></button> </h3>`
     return tempstr
 }
+
+function getMediaTemplateOrder(media) {
+    template = tempstr = `<h4  <p> Nombre: ${media.name}</p> <p> Genero: ${media.genre}</p> <p> Tipo: ${media.type}</p> <p> visualizaciones: ${media.views}</p> <p>promedio: ${media.average}</p> <button class="play-btn" id="vista" onclick="markAsViewed('${media.id}')"></button> </h3>`
+    return template
+}
+
 const HTMLResponse = document.querySelector("#app")
 const tpl = document.createDocumentFragment()
 
@@ -19,6 +26,10 @@ refresh.addEventListener('click', _ => {
     location.reload();
 })
 
+let vista = document.getElementById('vista');
+refresh.addEventListener('click', _ => {
+    location.reload();
+})
 
 const MEDIA_URL = 'http://127.0.0.1:8000/api/mediaorder?';
 const HTMLResponse2 = document.querySelector("#app2")
@@ -37,7 +48,7 @@ function showMedias(orderingField) {
         }))
         .then((response) => response.json())
         .then((users) => {
-            const tpl = users.map((media) => getMediaTemplate(media))
+            const tpl = users.map((media) => getMediaTemplateOrder(media))
             HTMLResponse2.innerHTML = `<p>${tpl}</p>`
         })
 }
@@ -76,7 +87,6 @@ function getCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -90,22 +100,10 @@ const csfr = document.getElementsByName("csrfmiddlewaretoken");
 async function markAsViewed(mediaIdSelected) {
     console.log(mediaIdSelected)
 
-    // const params = new URLSearchParams();
-    // params.append('mediaId', mediaIdSelected);
 
-    // const response = await fetch('http://127.0.0.1:8000/api/mediaview/', {
-    //     method: 'post',
-    //     body: params,
-    //     credentials: 'same-origin',
-    //     headers: {
-    //         "X-CSRFToken": csfr.name
-    //     }
-    // });
-    // const data = await response.json();
+
     const params = new URLSearchParams();
     params.append('mediaId', mediaIdSelected);
-    // You have to download 3rd Cookies library
-    // https://docs.djangoproject.com/en/dev/ref/csrf/#ajax
     let csrftoken = getCookie('csrftoken');
     let response = fetch("http://127.0.0.1:8000/api/mediaview/", {
         method: 'POST',
@@ -113,6 +111,6 @@ async function markAsViewed(mediaIdSelected) {
         headers: { "X-CSRFToken": csrftoken },
     })
 
-    console.log(response);
+
 
 }

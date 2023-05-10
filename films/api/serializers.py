@@ -4,13 +4,14 @@ from rest_framework.fields import SerializerMethodField
 from django.db.models import Avg
 from rest_framework.validators import UniqueTogetherValidator
 from rest_framework import serializers
-from rest_framework.fields import CurrentUserDefault
 
 
 class MediaViewSerializer(ModelSerializer):
+    userId = serializers.HiddenField(
+    default=serializers.CurrentUserDefault())
     class Meta:
         model= MediaViews
-        fields = "__all__"
+        fields = ['userId','mediaId']
         validators = [
             UniqueTogetherValidator(
                 queryset=MediaViews.objects.all(),
@@ -18,9 +19,6 @@ class MediaViewSerializer(ModelSerializer):
             )
         ]
 
-        def save(self):
-            userId = CurrentUserDefault()  # <= magic!
-            mediaId = self.validated_data['mediaId']
 
 class Mediaserializer(ModelSerializer):
     views =SerializerMethodField()
@@ -42,6 +40,8 @@ class Mediaserializer(ModelSerializer):
     
 
 class MediaRatingSerializer(ModelSerializer):
+    userId = serializers.HiddenField(
+    default=serializers.CurrentUserDefault())
     class Meta:
         model=MediaRating
         fields=['userId','mediaId','rate']                

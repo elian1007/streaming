@@ -11,31 +11,52 @@
     <title>Peliculas o Series</title>
 </head>
 <body>
-    <h2>Peliculas </h2>
+    <h1>Peliculas y Series</h1>
     {% csrf_token %}
     
-
-    <div class="card" style="width: 18rem;">
-        <div class="container" id="app">
-            
-        </div>
-        <button id="refresh">Probar suerte</button>
+<div class="body">
+    <div class="containerbtn">
+       <button class="button-33" id="refresh">Probar suerte</button>
     </div>
-    <select id="select" onchange="eventSelect();" name="select">
-        <option value="">Seleccione Order</option>
-        <option value="name">Nombre</option>
-        <option value="type">Tipo</option>
-        <option value="genre">Genero</option>
-        <option value="views">Vistas</option>
-        <option value="rate">Puntaje</option>
-      </select>
+    <div class="card" style="width: 30rem;">
+        <form>
+            <p class="clasificacion">
+              <input id="radio1" type="radio" name="estrellas" value="5"><!--
+              --><label for="radio1">★</label><!--
+              --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+              --><label for="radio2">★</label><!--
+              --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+              --><label for="radio3">★</label><!--
+              --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+              --><label for="radio4">★</label><!--
+              --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+              --><label for="radio5">★</label>
+            </p>
+          </form>
+        <div class="container" id="app">
+        </div>
+    </div>
+</div>
+<label class="custom-select" for="styledSelect1">
+  <select onchange="eventSelect();" id="select" name="select">
+  <option value="">Seleccione Order</option>
+  <option value="name">Nombre</option>
+  <option value="type">Tipo</option>
+  <option value="genre">Genero</option>
+  <option value="views">Vistas</option>
+  <option value="rate">Puntaje</option>
+</select></label>
+
+<div class="">
     <div id="app2"></div>
+
 
     <input id="name" type="text"   placeholder="Nombre">
     <input id="genre" type="text"  placeholder="Genero">
     <input id="rate" type="text"  placeholder="Tipo">
     <button id="buttonFilter" onclick="eventFilter()" >Filtrar</button>
     <div id="appFilter" ></div>
+</div>
 
 {% if request.user.is_authenticated %}
     <a href="{% url 'login' %}" >Salir</a>
@@ -45,17 +66,163 @@
 
 </html>
  <style>
+  h1{
+    color: wheat;
+  }
+  @charset "UTF-8";
+.custom-select {
+  position: relative;
+  display: block;
+  max-width: 400px;
+  min-width: 180px;
+  margin: 0 auto;
+  border: 1px solid #3C1C78;
+  background-color: #16013E;
+  z-index: 10;
+}
+.custom-select select {
+  border: none;
+  outline: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+  width: 100%;
+  padding: 12px 55px 15px 15px;
+  font-size: 14px;
+  color: #714BB9;
+}
+.custom-select:after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  line-height: 38px;
+  content: "∨";
+  text-align: center;
+  color: #714BB9;
+  font-size: 24px;
+  border-left: 1px solid #3C1C78;
+  z-index: -1;
+}
+
+body {
+  margin-top: 80px;
+  background-color: black;
+}
+    #form {
+        width: 250px;
+        margin: 0 auto;
+        height: 50px;
+      }
+      
+      #form p {
+        text-align: center;
+      }
+      
+      #form label {
+        font-size: 20px;
+      }
+      
+      input[type="radio"] {
+        display: none;
+      }
+      
+      label {
+        color: grey;
+      }
+      
+      .clasificacion {
+        direction: rtl;
+        unicode-bidi: bidi-override;
+      }
+      
+      label:hover,
+      label:hover ~ label {
+        color: orange;
+      }
+      
+      input[type="radio"]:checked ~ label {
+        color: orange;
+      }
+
+    .containerbtn{
+        display: flex;
+        width: 64%;
+        justify-content: center;
+        height: 50px;
+        margin-top: 105px;
+
+    }
+    h4{
+      border: solid 2px black;
+      border-radius: 10px;
+      text-align: center;
+      text-decoration: none;
+      display:flex
+      border:2px solid #c2fbd7;
+      color: wheat;
+      color: wheat;
+      box-shadow: 0px 0px 25px 3px #c2fbd7;
+  }
+
+  h4:hover{
+      border:2px solid #c2fbd7;
+      box-shadow: 0px 0px 25px 3px #c2fbd7;
+
+  }
+  .card2{
+    background:red;!Importat
+  }
+  .custom-select{
+    margin-top:20px;
+  }
+  h4{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 35%;
+      margin-right: 50PX;
+  }
+
+  p{
+    color: wheat;
+  }
+
+  #app2{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
     .card{
         border: solid 2px black;
         border-radius: 10px;
         text-align: center;
         text-decoration: none;
         display:flex
+        border:2px solid #c2fbd7;
+        box-shadow: 0px 0px 25px 3px #c2fbd7;
+    }
+
+    .card:hover{
+        border:2px solid #c2fbd7;
+        box-shadow: 0px 0px 25px 3px #c2fbd7;
+
     }
     
-    body{
-        background-color: rgba(33, 32, 32, 0.29)(20, 18, 18);
+    .body{
+        display: flex;
+        justify-content: right;
+        background: #2E4053;
     }
+
 
     .card{
         flex-direction: column;
@@ -63,19 +230,120 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        margin-right: 50PX;
     }
 
-    button{
-        border: none;
-        background: blue;
-        border-radius: 3px;
-        width: 111px;
-        height: 32px;
-        margin-bottom: 10px;
-    }
+    .button-33 {
+        background-color: #c2fbd7;
+        border-radius: 100px;
+        box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+        color: green;
+        cursor: pointer;
+        display: inline-block;
+        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+        padding: 7px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 250ms;
+        border: 0;
+        width: 60%;
+        height: 134%;
+        font-size: 16px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+      
+      .button-33:hover {
+        box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+        transform: scale(1.05) rotate(-1deg);
+      }
 
-    button:hover{
-        color:width
+      .play-btn {
+        width: 65px;
+        height: 65px;
+        background: radial-gradient( rgba(255, 0, 128, 0.8) 60%, rgba(255, 255, 255, 1) 62%);
+        border-radius: 50%;
+        position: relative;
+        display: block;
+        margin: 25px auto;
+        box-shadow: 0px 0px 25px 3px rgba(255, 0, 128, 0.8);
     }
+      
+      
+      /* triangle */
+      .play-btn::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translateX(-40%) translateY(-50%);
+        transform: translateX(-40%) translateY(-50%);
+        transform-origin: center center;
+        width: 0;
+        height: 0;
+        border-top: 15px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-left: 25px solid #fff;
+        z-index: 100;
+        -webkit-transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+      
+      /* pulse wave */
+      .play-btn:before {
+        content: "";
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+        -webkit-animation: pulsate1 2s;
+        animation: pulsate1 2s;
+        -webkit-animation-direction: forwards;
+        animation-direction: forwards;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: steps;
+        animation-timing-function: steps;
+        opacity: 1;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, .75);
+        top: -30%;
+        left: -30%;
+        background: rgba(198, 16, 0, 0);
+      }
+      
+      @-webkit-keyframes pulsate1 {
+        0% {
+          -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+          opacity: 1;
+          box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75), 0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          opacity: 0;
+          box-shadow: none;
+      
+        }
+      }
+      
+      @keyframes pulsate1 {
+        0% {
+          -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+          opacity: 1;
+          box-shadow: inset 0px 0px 25px 3px rgba(255, 255, 255, 0.75), 0px 0px 25px 10px rgba(255, 255, 255, 0.75);
+        }
+        100% {
+          -webkit-transform: scale(1, 1);
+          transform: scale(1);
+          opacity: 0;
+          box-shadow: none;
+      
+        }
 
+      }
 </style>
