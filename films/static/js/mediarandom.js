@@ -2,17 +2,42 @@ const API_URL = 'http://127.0.0.1:8000/api/mediarandom/';
 
 function getMediaTemplate(media) {
 
-    tempstr = `<h3>  <p> Nombre : ${media.name}</p> <p> Genero : ${media.genre}</p> <p> Tipo : ${media.type}</p> <p> Visualizaciones : ${media.views}</p> <p>Promedio: ${media.average}</p><button  class="play-btn" id="" onclick="markAsViewed('${media.id}')"></button> <button onclick="markAsRating('${media.id}')" >Enviar</button> </h3>`
+    tempstr = `<h3>  <p> Nombre : ${media.name}</p> <p> Genero : ${media.genre}</p> <p> Tipo : ${media.type}</p> <p> Visualizaciones : ${media.views}</p> <p>Votación: ${media.average}</p><button  class="play-btn" id="" onclick="markAsViewed('${media.id}')"></button>        
+    <select  id="selectAverage" name="select">
+    <option value="">Calificar por estrellas </option>
+    <option value=1>★</option>
+    <option value=2>★★</option>
+    <option value=3>★★★</option>
+    <option value=4>★★★★</option>
+    <option value=5>★★★★★</option>
+  </select></label> <button id="btn-vot" onclick="markAsRating('${media.id}')" >Enviar</button> </h3>`
     return tempstr
 }
 
 function getMediaTemplateOrder(media) {
-    template = tempstr = `<h4  <p> Nombre: ${media.name}</p> <p> Genero: ${media.genre}</p> <p> Tipo: ${media.type}</p> <p> Visualizaciones: ${media.views}</p> <p>Promedio: ${media.average}</p><button class="play-btn" id="" onclick="markAsViewed('${media.id}')"></button> </h3>`
+    template = tempstr = `<h4  <p> Nombre: ${media.name}</p> <p> Genero: ${media.genre}</p> <p> Tipo: ${media.type}</p> <p> Visualizaciones: ${media.views}</p> <p>Promedio: ${media.average}</p><button class="play-btn" id="" onclick="markAsViewed('${media.id}')"></button> 
+    <select  id="selectAverage" name="select">
+    <option value="">Calificar por estrellas </option>
+    <option value=1>★</option>
+    <option value=2>★★</option>
+    <option value=3>★★★</option>
+    <option value=4>★★★★</option>
+    <option value=5>★★★★★</option>
+  </select></label> <button id="btn-vot" onclick="markAsRating('${media.id}')" >VOTAR</button> 
+    </div>
+</h3>`
     return template
 }
 
 function getMediaTemplateFilter(media) {
-    template = tempstr = `<h4  <p> Nombre: ${media.name}</p> <p> Genero: ${media.genre}</p> <p> Tipo: ${media.type}</p> <p> Visualizaciones: ${media.views}</p> <p>Promedio: ${media.average}</p><button class="play-btn" id="" onclick="markAsViewed('${media.id}')"></button> </h3>`
+    template = tempstr = `<h4  <p> Nombre: ${media.name}</p> <p> Genero: ${media.genre}</p> <p> Tipo: ${media.type}</p> <p> Visualizaciones: ${media.views}</p> <p>Promedio: ${media.average}</p><button class="play-btn" id="" onclick="markAsViewed('${media.id}')"></button>  <select  id="selectAverage" name="select">
+    <option value="">Seleccione </option>
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+    <option value=5>5</option>
+  </select></label> <button id="btn-vot" onclick="markAsRating('${media.id}')" >VOTAR</button> </h3>`
     return template
 }
 const HTMLResponse = document.querySelector("#app")
@@ -25,10 +50,10 @@ fetch(`${API_URL}`)
         HTMLResponse.innerHTML = `<p>${tpl}</p>`
     })
 
-// let refresh = document.getElementById('refresh');
-// refresh.addEventListener('click', _ => {
-//     location.reload();
-// })
+let refresh = document.getElementById('refresh');
+refresh.addEventListener('click', _ => {
+    location.reload();
+})
 
 
 
@@ -102,7 +127,7 @@ function getCookie(name) {
 const csfr = document.getElementsByName("csrfmiddlewaretoken");
 async function markAsViewed(mediaIdSelected) {
     console.log(mediaIdSelected)
-        // location.reload();
+    location.reload();
     const params = new URLSearchParams();
     params.append('mediaId', mediaIdSelected);
     let csrftoken = getCookie('csrftoken');
@@ -123,7 +148,7 @@ const csfr1 = document.getElementsByName("csrfmiddlewaretoken");
 async function markAsRating(mediaIdSelected) {
     const selectAverage = document.getElementById("selectAverage").value
     console.log(mediaIdSelected)
-        // location.reload();
+    location.reload();
 
     const params1 = new URLSearchParams();
     params1.append('rate', selectAverage);
