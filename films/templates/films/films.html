@@ -19,6 +19,14 @@
        <button class="button-33" id="refresh">Probar suerte</button>
     </div>
     <div class="card" style="width: 30rem;">
+      <select  id="selectAverage" name="select">
+        <option value="">Seleccione </option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select></label>
 
         <div class="container" id="app">
         </div>
@@ -47,7 +55,7 @@
     <div id="appFilter" ></div>
 </div>
 
-{% if request.user.is_authenticated %}
+{% if request.user.is_authenticated %}z
     <a href="{% url 'login' %}" >Salir</a>
 {% endif %}
 <script type="text/javascript" src="{% static '/js/mediarandom.js' %}"></script>
@@ -293,7 +301,7 @@ body {
         transform: scale(1.05) rotate(-1deg);
       }
 
-      .play-btn {
+       .play-btn {
         width: 65px;
         height: 65px;
         background: radial-gradient( rgba(255, 0, 128, 0.8) 60%, rgba(255, 255, 255, 1) 62%);
@@ -302,11 +310,11 @@ body {
         display: block;
         margin: 25px auto;
         box-shadow: 0px 0px 25px 3px rgba(255, 0, 128, 0.8);
-    }
+    } 
       
       
       /* triangle */
-      .play-btn::after {
+       .play-btn::after {
         content: "";
         position: absolute;
         left: 50%;
@@ -322,10 +330,10 @@ body {
         z-index: 100;
         -webkit-transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
         transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-      }
+      } 
       
       /* pulse wave */
-      .play-btn:before {
+       .play-btn:before {
         content: "";
         position: absolute;
         width: 150%;
@@ -346,7 +354,7 @@ body {
         top: -30%;
         left: -30%;
         background: rgba(198, 16, 0, 0);
-      }
+      } 
       
       @-webkit-keyframes pulsate1 {
         0% {

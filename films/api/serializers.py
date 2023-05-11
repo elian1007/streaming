@@ -13,6 +13,7 @@ class MediaViewSerializer(ModelSerializer):
         model= MediaViews
         fields = ['userId','mediaId']
         validators = [
+            
             UniqueTogetherValidator(
                 queryset=MediaViews.objects.all(),
                 fields=['userId', 'mediaId']
